@@ -115,3 +115,80 @@ button{
 .register p a:hover{
     text-decoration: underline;
 }
+
+.button-container {
+    display: flex;
+    flex-direction: row; /* Places buttons side by side */
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Centers the buttons vertically */
+    gap: 20px; /* Adds space between the buttons */
+    width: 100%; /* Full width of the screen */
+    height: 90vh; /* Full height of the screen */
+}
+
+.hom-but {
+    display: flex;
+    flex-direction: column; /* Stacks icon and text vertically */
+    align-items: center; /* Centers icon and text horizontally */
+    justify-content: center; /* Centers icon and text vertically */
+    flex-grow: 10px; /* Prevents the button from expanding */
+    flex-shrink: 0; /* Prevents the button from shrinking */
+    width: 350px; /* Set a fixed width for each button */
+    height: 400px; /* Set a fixed height for each button */
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fffafa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.hom-but:hover {
+    background-color: #f1efef;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.hom-but .button-content {
+    display: flex;
+    flex-direction: column; /* Stacks icon and text */
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+    height: 110%; /* Full height of the button */
+}
+
+.hom-but .icon img {
+    width: 180px; /* Adjust icon size */
+    height: 180px;
+    margin-bottom: 15px; /* Space between icon and text */
+}
+
+.hom-but .text h3 {
+    margin: 0;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.hom-but .text p {
+    margin: 2px 0;
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+}
+
+.home_page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    
+    background: url('home_background.png')no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: darken;
+}
+
+
+
