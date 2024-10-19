@@ -15,10 +15,12 @@ section{
     background-position: center;
     background-size: cover;
 }
+
+
 .form-box{
     position: relative;
     width: 400px;
-    height: 450px;
+    height: fit-content;
     background: transparent;
     border: 2px solid rgba(255,255,255,0.5);
     border-radius: 20px;
@@ -26,7 +28,6 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 h2{
     font-size: 2em;
@@ -178,7 +179,7 @@ button{
 }
 
 .home_page {
-    display: flex;
+    display: flex; 
     justify-content: center;
     align-items: center;
     min-height: 100vh;

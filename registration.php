@@ -50,7 +50,7 @@
       		$conn->close();
         
           $reg = "Registration Successful";
-          $lin = "index.php";
+          $lin = "index.html";
       }
      
   } else {
