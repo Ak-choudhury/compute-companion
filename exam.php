@@ -92,6 +92,32 @@ if ($stat != "su") {
                 </li>
             </ul>
         </nav>
+        <div class="exam21">
+            <div class="button-container">
+                <a href="#" class="hom-but">
+                    <div class="button-content">
+                        <div class="icon">
+                            <img src="past_paper.gif" alt="Icon 1" />
+                        </div>
+                        <div class="text">
+                            <h3>past papers</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="hom-but">
+                    <div class="button-content">
+                        <div class="icon">
+                            <img src="ai.gif" alt="Icon 2" />
+                        </div>
+                        <div class="text">
+                            <h3>ai generated papers</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
 
 
     </body>

@@ -73,29 +73,7 @@ if ($stat != "su") {
         <title>compute companion-home</title>
     </head>
     <body>
-        <!--  
-        <nav>
-             Checkbox for toggling menu 
-            <input type="checkbox" id="check">
-
-             Menu icon 
-            <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-            </label>
-
-             Site logo 
-            <label class="logo"><a href="home.php">Compute companion</label>
-
-             Navigation links 
-            <ul>
-            <li><a href="aboutus.html">about us</a></li>
-            <li><a href="#">messages</a></li>
-            <li><a href="#">account</a></li>
-            
-            </ul>
-        
-        </nav> 
-        -->
+       
         <nav>
             <!-- Checkbox for toggling menu -->
             <input type="checkbox" id="check">
