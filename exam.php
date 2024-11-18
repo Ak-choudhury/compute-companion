@@ -92,7 +92,7 @@ if ($stat != "su") {
                 </li>
             </ul>
         </nav>
-        <div class="exam21">
+        <div class="home_page">
             <div class="button-container">
                 <a href="#" class="hom-but">
                     <div class="button-content">
@@ -101,7 +101,7 @@ if ($stat != "su") {
                         </div>
                         <div class="text">
                             <h3>past papers</h3>
-                            <p></p>
+                            <p>real past papers marked by ai providing instant marks</p>
                         </div>
                     </div>
                 </a>
@@ -112,7 +112,7 @@ if ($stat != "su") {
                         </div>
                         <div class="text">
                             <h3>ai generated papers</h3>
-                            <p></p>
+                            <p>full exam papers generated and marked by ai</p>
                         </div>
                     </div>
                 </a>
