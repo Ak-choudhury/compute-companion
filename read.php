@@ -92,32 +92,7 @@ if ($stat != "su") {
                 </li>
             </ul>
         </nav>
-        <div class="home_page">
-            <div class="button-container">
-                <a href="videos.php" class="hom-but">
-                    <div class="button-content">
-                        <div class="icon">
-                            <img src="video-tutorial.gif" alt="Icon 1" />
-                        </div>
-                        <div class="text">
-                            <h3>subject videos</h3>
-                            <p>a bank of use full videos to help fill in gaps in knowledge</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="read.php" class="hom-but">
-                    <div class="button-content">
-                        <div class="icon">
-                            <img src="presentation.gif" alt="Icon 2" />
-                        </div>
-                        <div class="text">
-                            <h3>notes and powerpoints</h3>
-                            <p>a place full of reading resourses for you to use to gain knoledge</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-    </body>
+        </body>
     </html>
     <?php
 }

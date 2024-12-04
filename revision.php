@@ -93,7 +93,18 @@ if ($stat != "su") {
             </ul>
         </nav>
         <h1>hello</h1>
-
+        <h1>Your Generated Quiz</h1>
+        <h1>Generate a Quiz</h1>
+        <form action="/quiz" method="post">
+            <label for="topic">Topic:</label>
+            <input type="text" id="topic" name="topic" required><br><br>
+            
+            
+            <label for="num_questions">Number of Questions:</label>
+            <input type="number" id="num_questions" name="num_questions" min="1" max="10" required><br><br>
+            
+            <button type="submit">Generate Quiz</button>
+        </form>
     </body>
     </html>
     <?php

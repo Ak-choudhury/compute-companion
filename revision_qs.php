@@ -61,10 +61,10 @@ if ($stat != "su") {
         <link rel="stylesheet" href="style.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="navstyle.css">
-        <title>compute companion-learn</title>
+        <title>compute companion-revise</title>
     </head>
     <body>
-        <nav>
+    <nav>
             <!-- Checkbox for toggling menu -->
             <input type="checkbox" id="check">
 
@@ -92,32 +92,20 @@ if ($stat != "su") {
                 </li>
             </ul>
         </nav>
-        <div class="home_page">
-            <div class="button-container">
-                <a href="videos.php" class="hom-but">
-                    <div class="button-content">
-                        <div class="icon">
-                            <img src="video-tutorial.gif" alt="Icon 1" />
-                        </div>
-                        <div class="text">
-                            <h3>subject videos</h3>
-                            <p>a bank of use full videos to help fill in gaps in knowledge</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="read.php" class="hom-but">
-                    <div class="button-content">
-                        <div class="icon">
-                            <img src="presentation.gif" alt="Icon 2" />
-                        </div>
-                        <div class="text">
-                            <h3>notes and powerpoints</h3>
-                            <p>a place full of reading resourses for you to use to gain knoledge</p>
-                        </div>
-                    </div>
-                </a>
+        <h1>hello</h1>
+        <h1>Your Generated Quiz</h1>
+        <form action="/result" method="post">
+            <div>
+                <!-- Display the questions here -->
+                <p>{{ questions | safe }}</p>
             </div>
-    </body>
+            <button type="submit">Submit Answers</button>
+            
+            <!-- Hidden input for the correct answer hash -->
+            <input type='hidden' id='answer' name='answer' value="">
+            <input type='hidden' id='answer_hash' name='answer_hash' value="{{ answer_hash }}">
+        </form>
+        </body>
     </html>
     <?php
 }
