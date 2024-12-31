@@ -128,7 +128,7 @@ if ($stat != "su") {
                         </div>
                     </div>
                 </a>
-                <a href="/ai-question-generator" class="hom-but">
+                <a href="/question_generation/index.html" class="hom-but">
                     <div class="button-content">
                         <div class="icon">
                             <img src="revise.gif" alt="Icon 3" />

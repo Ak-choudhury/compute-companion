@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navstyle.css">
+</head>
+<body>
+    <nav>
+        <!-- Checkbox for toggling the menu visibility -->
+        <input type="checkbox" id="check">
+
+        <!-- Label for the toggle checkbox, containing the menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i> <!-- Icon for a hamburger menu -->
+        </label>
+
+        <!-- Logo for the website -->
+        <div class="logo">
+            <a href="../home.php">Compute Companion</a> <!-- Link back to the home page -->
+        </div>
+
+        <!-- Navigation menu links -->
+        <ul>
+            <li><a href="aboutus.html">About Us</a></li> <!-- Link to About Us page -->
+            <li><a href="#">Messages</a></li> <!-- Placeholder link for messages -->
+            <li class="dropdown">
+                <a href="#">Account</a> <!-- Dropdown menu for account-related options -->
+                <ul class="dropdown-content">
+                    <li><a href="#">Profile</a></li> <!-- Link to user profile -->
+                    <li><a href="#">Settings</a></li> <!-- Link to settings page -->
+                    <li><a href=".//logout.php">Logout</a></li> <!-- Link to logout functionality -->
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <h1>Generate a Quiz</h1>
+    <form action="/question_generation/quiz" method="post">
+        <label for="topic">Topic:</label>
+        <input type="text" id="topic" name="topic" required>
+        <br><br>
+
+        <label for="num_questions">Number of Questions:</label>
+        <input type="number" id="num_questions" name="num_questions" min="1" max="10" required>
+        <br><br>
+
+        <button type="submit">Generate Quiz</button>
+    </form>
+</body>
+</html>

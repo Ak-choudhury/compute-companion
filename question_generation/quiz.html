@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navstyle.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const quizContainer = document.getElementById('quiz-container');
+            const questionsHTML = `{{ questions | safe }}`;
+
+            const lines = questionsHTML.split('<br>').map(line => line.trim()).filter(line => line !== '');
+
+            let currentQuestion = null;
+            let currentOptions = [];
+            let currentAnswerHash = null;
+            let questionNumber = 0;
+
+            lines.forEach(line => {
+                if (line.startsWith("Question ")) {
+                    if (currentQuestion) {
+                        renderQuestion(quizContainer, questionNumber, currentQuestion, currentOptions, currentAnswerHash);
+                        currentOptions = [];
+                        currentAnswerHash = null;
+                    }
+                    currentQuestion = line;
+                    questionNumber++;
+                } else if (line.startsWith("A.") || line.startsWith("B.") || line.startsWith("C.") || line.startsWith("D.")) {
+                    currentOptions.push(line);
+                } else if (/^[0-9a-f]{64}$/i.test(line)) {
+                    currentAnswerHash = line;
+                }
+            });
+
+            if (currentQuestion) {
+                renderQuestion(quizContainer, questionNumber, currentQuestion, currentOptions, currentAnswerHash);
+            }
+
+            function renderQuestion(container, questionNum, questionText, options, answerHash) {
+                const questionDiv = document.createElement('div');
+                questionDiv.innerHTML = `
+                    <p><strong>${questionText}</strong></p>
+                    ${options.map(option => `
+                        <label>
+                            <input type="radio" name="answer_${questionNum}" value="${option[0]}" required>
+                            ${option}
+                        </label><br>
+                    `).join('')}
+                    <input type="hidden" name="answer_hash_${questionNum}" value="${answerHash}">
+                `;
+                container.appendChild(questionDiv);
+            }
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <!-- Checkbox for toggling the menu visibility -->
+        <input type="checkbox" id="check">
+
+        <!-- Label for the toggle checkbox, containing the menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i> <!-- Icon for a hamburger menu -->
+        </label>
+
+        <!-- Logo for the website -->
+        <div class="logo">
+            <a href="../home.php">Compute Companion</a> <!-- Link back to the home page -->
+        </div>
+
+        <!-- Navigation menu links -->
+        <ul>
+            <li><a href="aboutus.html">About Us</a></li> <!-- Link to About Us page -->
+            <li><a href="#">Messages</a></li> <!-- Placeholder link for messages -->
+            <li class="dropdown">
+                <a href="#">Account</a> <!-- Dropdown menu for account-related options -->
+                <ul class="dropdown-content">
+                    <li><a href="#">Profile</a></li> <!-- Link to user profile -->
+                    <li><a href="#">Settings</a></li> <!-- Link to settings page -->
+                    <li><a href="../logout.php">Logout</a></li> <!-- Link to logout functionality -->
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <h1>Your Generated Quiz</h1>
+    <form action="/question_generation/result" method="post">
+        <div id="quiz-container"></div>
+        <br>
+        <button type="submit">Submit Answers</button>
+    </form>
+</body>
+</html>

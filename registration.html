@@ -1,46 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Link to the external stylesheet for styling the page -->
   <link rel="stylesheet" href="style.css">
+  <!-- Title of the page shown in the browser tab -->
   <title>compute companion - Registration</title>
+  <!-- Favicon for the webpage, shown in the browser tab -->
   <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
+    <!-- Ionicons library for using icons in the form -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- External script file for additional functionalities -->
     <script type="module" src="script.js"></script>
+
+    <!-- Main section containing the registration form -->
     <section>
-        
+        <!-- Form container -->
         <div class="form-box">
             <div class="form-value">
-                    <h2>Registration</h2>
-                    <form action="registration.php" method="post"> <!-- the registation from and redirect to registration.phhp to save account -->
-                      <div class="inputbox">
-                          <ion-icon name="mail-outline"></ion-icon>
-                          <input type="text"  id="username" name="username"required>
-                          <label for="">Name</label>
-                      </div>
-                      <div class="inputbox">
-                          <ion-icon name="lock-closed-outline"></ion-icon>
-                          <input type="password" id="password" name="password" required>
-                          <label for="">Password</label>
-                      </div>
-                      <div class="inputbox">
-                          <ion-icon name="lock-closed-outline"></ion-icon>
-                          <input type="password" id="cpassword" name="cpassword" required>
-                          <label for="">Confirm Password</label>
-                      </div>
-
-                <div class="inputbox">
-                          <ion-icon name="lock-closed-outline"></ion-icon>
-                          <input type="email" id="email" name="email"required >
-                          <label for="">Email</label>
-                      </div>
-                      <button type="submit" class="button">Register</button>
-                    </form>
-                    <div class="register">
-                        <p>Already have an account? <a href="index.html">Login</a></p>
+                <!-- Heading for the registration form -->
+                <h2>Registration</h2>
+                <!-- Registration form that submits data to registration.php -->
+                <form action="registration.php" method="post">
+                    
+                    <!-- Username input field -->
+                    <div class="inputbox">
+                        <!-- Icon for email (used as a visual aid) -->
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <!-- Input field for username -->
+                        <input type="text" id="username" name="username" required>
+                        <!-- Label for username -->
+                        <label for="">Name</label>
                     </div>
+
+                    <!-- Password input field -->
+                    <div class="inputbox">
+                        <!-- Icon for password -->
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <!-- Input field for password -->
+                        <input type="password" id="password" name="password" required>
+                        <!-- Label for password -->
+                        <label for="">Password</label>
+                    </div>
+
+                    <!-- Confirm Password input field -->
+                    <div class="inputbox">
+                        <!-- Icon for confirm password -->
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <!-- Input field for confirm password -->
+                        <input type="password" id="cpassword" name="cpassword" required>
+                        <!-- Label for confirm password -->
+                        <label for="">Confirm Password</label>
+                    </div>
+
+                    <!-- Email input field -->
+                    <div class="inputbox">
+                        <!-- Icon for email -->
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <!-- Input field for email -->
+                        <input type="email" id="email" name="email" required>
+                        <!-- Label for email -->
+                        <label for="">Email</label>
+                    </div>
+
+                    <!-- Submit button to submit the form -->
+                    <button type="submit" class="button">Register</button>
+                </form>
+
+                <!-- Link to the login page for users who already have an account -->
+                <div class="register">
+                    <p>Already have an account? <a href="index.html">Login</a></p>
+                </div>
             </div>
         </div>
     </section>

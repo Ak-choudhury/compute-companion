@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="navstyle.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <!-- Checkbox for toggling the menu visibility -->
+        <input type="checkbox" id="check">
+
+        <!-- Label for the toggle checkbox, containing the menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i> <!-- Icon for a hamburger menu -->
+        </label>
+
+        <!-- Logo for the website -->
+        <div class="logo">
+            <a href="../home.php">Compute Companion</a> <!-- Link back to the home page -->
+        </div>
+
+        <!-- Navigation menu links -->
+        <ul>
+            <li><a href="aboutus.html">About Us</a></li> <!-- Link to About Us page -->
+            <li><a href="#">Messages</a></li> <!-- Placeholder link for messages -->
+            <li class="dropdown">
+                <a href="#">Account</a> <!-- Dropdown menu for account-related options -->
+                <ul class="dropdown-content">
+                    <li><a href="#">Profile</a></li> <!-- Link to user profile -->
+                    <li><a href="#">Settings</a></li> <!-- Link to settings page -->
+                    <li><a href="../logout.php">Logout</a></li> <!-- Link to logout functionality -->
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <h1>Quiz Results</h1>
+
+    <p>Total Questions: {{ total_questions }}</p>
+    <p>Correct Answers: {{ correct_count }}</p>
+    <p>Score: {{ score_percentage }}%</p>
+
+    <h2>Question Breakdown:</h2>
+    <ul>
+        {% for result in results %}
+        <li>
+            Question {{ result.question_number }}: 
+            {% if result.is_correct %}
+                ✅ Correct
+            {% else %}
+                ❌ Incorrect
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
