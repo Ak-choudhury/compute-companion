@@ -3,11 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Generator</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navstyle.css">
+    <title>Quiz Generator</title>
+    <style>
+        /* Center Box Styles */
+        body {
+            background: url('background.jpg') no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    
+        main {
+            margin: 50px auto;
+            width: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px); /* Account for navbar height */
+        }
+    
+        .center-box {
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            background: rgba(228, 218, 218, 0.7); /* Translucent background */
+            backdrop-filter: blur(5px); /* Blur effect on the background */
+        }
+    
+        /* Header Styles */
+        .center-box h1,
+        .center-box h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            text-align: center; /* Center the header */
+        }
+    
+        .center-box button {
+            width: 80%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 12px;
+            color: #fff;
+            background-color: #2e2f30;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            justify-content: ;
+        }
+    
+        .center-box button:hover {
+            background-color: #5b6e6d;
+        }
+    
+        /* Grid for the topic buttons (3 per row) */
+        .topic-buttons, .num-questions-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 3 buttons per row */
+            gap: 5px;
+            margin-top: 10px;
+        }
+    
+        /* Style for the selected button */
+        .selected {
+            background-color: #4CAF50 !important; /* Green color */
+            border: 2px solid #2e2f30;
+        }
+    </style>
+    
+    
+    
 </head>
 <body>
+    <!-- Navbar -->
     <nav>
         <!-- Checkbox for toggling the menu visibility -->
         <input type="checkbox" id="check">
@@ -31,22 +103,94 @@
                 <ul class="dropdown-content">
                     <li><a href="#">Profile</a></li> <!-- Link to user profile -->
                     <li><a href="#">Settings</a></li> <!-- Link to settings page -->
-                    <li><a href=".//logout.php">Logout</a></li> <!-- Link to logout functionality -->
+                    <li><a href="../logout.php">Logout</a></li> <!-- Link to logout functionality -->
                 </ul>
             </li>
         </ul>
     </nav>
-    <h1>Generate a Quiz</h1>
-    <form action="/question_generation/quiz" method="post">
-        <label for="topic">Topic:</label>
-        <input type="text" id="topic" name="topic" required>
-        <br><br>
 
-        <label for="num_questions">Number of Questions:</label>
-        <input type="number" id="num_questions" name="num_questions" min="1" max="10" required>
-        <br><br>
+    <!-- Main Content -->
+    <main>
+        <div class="center-box">
+            <h1>Select Quiz Options</h1>
+            <!-- Form to send topic and number of questions to Flask -->
+            <form action="/question_generation/quiz" method="POST">
+                <div class="topic-buttons">
+                    <h2>Select Topic:</h2>
+                    
+                    <button type="button" onclick="selectTopic('Structure and Function of the Processor', this)">1.1.1. Structure and Function of the Processor</button>
+                    <button type="button" onclick="selectTopic('Types of Processor', this)">1.1.2. Types of Processor</button>
+                    <button type="button" onclick="selectTopic('Input, Output and Storage', this)">1.1.3. Input, Output and Storage</button>
+                    <button type="button" onclick="selectTopic('Systems Software', this)">1.2.1. Systems Software</button>
+                    <button type="button" onclick="selectTopic('Applications Generation', this)">1.2.2. Applications Generation</button>
+                    <button type="button" onclick="selectTopic('Software Development', this)">1.2.3. Software Development</button>
+                    <button type="button" onclick="selectTopic('Types of Programming Language', this)">1.2.4. Types of Programming Language</button>
+                    <button type="button" onclick="selectTopic('Compression, Encryption and Hashing', this)">1.3.1. Compression, Encryption and Hashing</button>
+                    <button type="button" onclick="selectTopic('Databases', this)">1.3.2. Databases</button>
+                    <button type="button" onclick="selectTopic('Networks', this)">1.3.3. Networks</button>
+                    <button type="button" onclick="selectTopic('Web Technologies', this)">1.3.4. Web Technologies</button>
+                    <button type="button" onclick="selectTopic('Data Types', this)">1.4.1. Data Types</button>
+                    <button type="button" onclick="selectTopic('Data Structures', this)">1.4.2. Data Structures</button>
+                    <button type="button" onclick="selectTopic('Boolean Algebra', this)">1.4.3. Boolean Algebra</button>
+                    <button type="button" onclick="selectTopic('Computing Related Legislation', this)">1.5.1. Computing Related Legislation</button>
+                    <button type="button" onclick="selectTopic('Moral and Ethical Issues', this)">1.5.2. Moral and Ethical Issues</button>
+                    <button type="button" onclick="selectTopic('Thinking Abstractly', this)">2.1.1. Thinking Abstractly</button>
+                    <button type="button" onclick="selectTopic('Thinking Ahead', this)">2.1.2. Thinking Ahead</button>
+                    <button type="button" onclick="selectTopic('Thinking Procedurally', this)">2.1.3. Thinking Procedurally</button>
+                    <button type="button" onclick="selectTopic('Thinking Logically', this)">2.1.4. Thinking Logically</button>
+                    <button type="button" onclick="selectTopic(' Thinking Concurrently', this)">2.1.5. Thinking Concurrently</button>
+                    <button type="button" onclick="selectTopic('Programming Techniques', this)">2.2.1. Programming Techniques</button>
+                    <button type="button" onclick="selectTopic('Computational Methods', this)">2.2.2. Computational Methods</button>
+                    <button type="button" onclick="selectTopic('Analysis, Design and Comparison of Algorithms', this)">2.3.1. Analysis, Design and Comparison of Algorithms</button>
+                    <button type="button" onclick="selectTopic('Algorithms for the Main Data Structures', this)">2.3.2. Algorithms for the Main Data Structures</button>
+                    <button type="button" onclick="selectTopic('Sorting Algorithms', this)">2.3.3. Sorting Algorithms</button>
+                    <button type="button" onclick="selectTopic('Searching Algorithms', this)">2.3.4. Searching Algorithms</button>
+                    <button type="button" onclick="selectTopic('Path Finding Algorithms', this)">2.3.5. Path Finding Algorithms</button>
+                </div>
+                
 
-        <button type="submit">Generate Quiz</button>
-    </form>
+                <div class="num-questions-buttons">
+                    <h2>Select Number of Questions:</h2>
+                    
+                    <button type="button" onclick="selectNumQuestions(5, this)">5 Questions</button>
+                    <button type="button" onclick="selectNumQuestions(10, this)">10 Questions</button>
+                    <button type="button" onclick="selectNumQuestions(15, this)">15 Questions</button>
+                    <button type="button" onclick="selectNumQuestions(20, this)">20 Questions</button>
+                </div>
+
+                <!-- Hidden inputs to store selected values -->
+                <input type="hidden" name="topic" id="selectedTopic">
+                <input type="hidden" name="num_questions" id="selectedNumQuestions">
+
+                <button type="submit">Generate Quiz</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function selectTopic(topic, button) {
+            // Remove 'selected' class from all topic buttons
+            let buttons = document.querySelectorAll('.topic-buttons button');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+
+            // Add 'selected' class to the clicked button
+            button.classList.add('selected');
+
+            // Set the selected topic in the hidden input
+            document.getElementById('selectedTopic').value = topic;
+        }
+
+        function selectNumQuestions(num, button) {
+            // Remove 'selected' class from all num-questions buttons
+            let buttons = document.querySelectorAll('.num-questions-buttons button');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+
+            // Add 'selected' class to the clicked button
+            button.classList.add('selected');
+
+            // Set the selected number of questions in the hidden input
+            document.getElementById('selectedNumQuestions').value = num;
+        }
+    </script>
 </body>
 </html>

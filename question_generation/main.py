@@ -34,9 +34,9 @@ def generate_questions(topic, level, num_questions):
     )
 
     response = openai.ChatCompletion.create(
-        model="gpt-4",  # Use "gpt-4" if available
+        model="gpt-4o",  # Use "gpt-4" if available
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=550  # Adjust if needed for more questions or longer questions
+        max_tokens=800  # Adjust if needed for more questions or longer questions
     )
 
     return response.choices[0].message['content'].strip()
