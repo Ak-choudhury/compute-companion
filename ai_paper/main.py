@@ -9,7 +9,7 @@ import re
 load_dotenv()
 
 # Retrieve the API key from environment variables
-openai.api_key = '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'
+openai.api_key =  os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__, template_folder='.', static_folder='.')
 
