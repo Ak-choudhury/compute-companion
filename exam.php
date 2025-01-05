@@ -105,14 +105,14 @@ if ($stat != "su") {
                         </div>
                     </div>
                 </a>
-                <a href="#" class="hom-but">
+                <a href="/ai_paper/index.html" class="hom-but">
                     <div class="button-content">
                         <div class="icon">
                             <img src="ai.gif" alt="Icon 2" />
                         </div>
                         <div class="text">
                             <h3>ai generated papers</h3>
-                            <p>full exam papers generated and marked by ai</p>
+                            <p>partial exam papers exam papers generated and marked by ai</p>
                         </div>
                     </div>
                 </a>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="navstyle.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            background-color: #3b3737;
+            background: url('background.jpg')no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* Navigation bar styling */
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        /* Main container for content with blurred background */
+        .result-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(39, 36, 36, 0.7); /* Translucent background */
+            backdrop-filter: blur(5px); /* Blur effect on the background */
+            padding: 30px;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;    
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: white;
+        }
+        /* Styling for correct/incorrect answers */
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        /* Heading and list styling */
+        h1, h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <!-- Checkbox for toggling menu -->
+        <input type="checkbox" id="check">
+
+        <!-- Menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+
+        <!-- Site logo -->
+        <div class="logo">
+            <a href="../home.php">Compute Companion</a>
+        </div>
+
+        <!-- Navigation links -->
+        <ul>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="#">Messages</a></li>
+            <li class="dropdown">
+                <a href="#">Account</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="../logout.php">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Quiz result container with blurred background -->
+    <div class="result-container">
+        <h1>Quiz Results</h1>
+
+        <p>Total Questions: {{ total_questions }}</p>
+        <p>Correct Answers: {{ correct_count }}</p>
+        <p>Score: {{ score_percentage }}%</p>
+
+        <h2>Question Breakdown:</h2>
+        <ul>
+            {% for result in results %}
+                <li>
+                    Question {{ result.question_number }}: 
+                    {% if result.is_correct %}
+                        <span class="correct">✅ Correct</span>
+                    {% else %}
+                        <span class="incorrect">❌ Incorrect</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
