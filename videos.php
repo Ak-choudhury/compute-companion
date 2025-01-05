@@ -320,53 +320,53 @@ if ($stat != "su") {  // Check if the session status is not equal to "su" (admin
 
                 <button onclick="toggleCollapse('Data Types, Data Structures and Algorithms')"> 1.4 Data Types, Data Structures and Algorithms</button>
                 <div id="Data Types, Data Structures and Algorithms" class="collapsible-content">
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="toggleCollapse('Subtopic2')">Subtopic 2</button>
-                <div id="Subtopic2" class="collapsible-content">
-                    <button onclick="changeVideo('Video 3 Title', 'https://www.youtube.com/embed/VIDEO_ID_3')">Video 3</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
+                <button onclick="changeVideo('Primitive data types', 'https://www.youtube.com/embed/A_R49e7su28')">Primitive data types</button>
+                <button onclick="changeVideo('Binary positive integers', 'https://www.youtube.com/embed/y8mo6u7kF9E')">Binary positive integers</button>
+                <button onclick="changeVideo('Sign and magnitude', 'https://www.youtube.com/embed/hJe5xqjiAFA)')">Sign and magnitude</button>
+                <button onclick="changeVideo(Two's complement', 'https://www.youtube.com/embed/LS8ZANp1Yp8')">Two's complement</button>
+                <button onclick="changeVideo('Binary addition and subtraction', 'https://www.youtube.com/embed/Lpx0R-G7p2w')">Binary addition and subtraction</button>
+                <button onclick="changeVideo('Hexadecimal representation', 'https://www.youtube.com/embed/qq48hNOZBzk')">Hexadecimal representation</button>
+                <button onclick="changeVideo('Converting between binary, hex & denary', 'https://www.youtube.com/embed/sGs6sz5YR4M')">Converting between binary, hex & denary</button>
+                <button onclick="toggleCollapse('Floating point binary')">Floating point binary</button>
+                <div id="Floating point binary" class="collapsible-content">
+                    <button onclick="changeVideo('Floating point binary part 1 - Overview', 'https://www.youtube.com/embed/mGfOJQgdI_U')">Floating point binary part 1 - Overview</button>
+                    <button onclick="changeVideo('Floating point binary part 2 - Normalisation', 'https://www.youtube.com/embed/IGQ9YOnhWxA')">Floating point binary part 2 - Normalisation</button>
+                    <button onclick="changeVideo('Floating point binary part 3 - Recap and further examples', 'https://www.youtube.com/embed/tRNTiEuXaMs')">Floating point binary part 3 - Recap and further examples</button>
                 </div>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="toggleCollapse('Subtopic2')">Subtopic 2</button>
-                <div id="Subtopic2" class="collapsible-content">
-                    <button onclick="changeVideo('Video 3 Title', 'https://www.youtube.com/embed/VIDEO_ID_3')">Video 3</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
+                <button onclick="changeVideo('Floating point arithmetic', 'https://www.youtube.com/embed/AcePXaxDkS8')">Floating point arithmetic</button>
+                <button onclick="changeVideo('Bitwise manipulation and masks', 'https://www.youtube.com/embed/qgCEjwDt3gQ')">Bitwise manipulation and masks</button>
+                <button onclick="changeVideo('Character sets', 'https://www.youtube.com/embed/YPD_Y3f5A-s')">Character sets</button>
+                <button onclick="changeVideo('Arrays, records, lists & tuples', 'https://www.youtube.com/embed/e3crB2Yi4ps')">Arrays, records, lists & tuples</button>
+                <button onclick="changeVideo('Tuples, static or dynamic', 'https://www.youtube.com/embed/NT-3D-ozmOg')">Tuples, static or dynamic</button>
+                <button onclick="toggleCollapse('Data structures')">Data structures</button>
+                <div id="Data structures" class="collapsible-content">
+                    <button onclick="changeVideo('Data structures part 1 - Linked lists', 'https://www.youtube.com/embed/sdO9cPdgVAk')">Data structures part 1 - Linked lists</button>
+                    <button onclick="changeVideo('Data structures part 2 - Graphs', 'https://www.youtube.com/embed/rPu8em_PX4o')">Data structures part 2 - Graphs</button>
+                    <button onclick="changeVideo('Data structures part 3 - Stacks & queues', 'https://www.youtube.com/embed/_7_jYMk_R9k')">Data structures part 3 - Stacks & queues</button>
+                    <button onclick="changeVideo('Data structures part 4 - Trees', 'https://www.youtube.com/embed/0amXaMnTlhI')">Data structures part 4 - Trees</button>
+                    <button onclick="changeVideo('Data structures part 5 - Hash tables', 'https://www.youtube.com/embed/0Wr6C81L8Mg')">Data structures part 5 - Hash tables</button>
                 </div>
-                <button onclick="toggleCollapse('Subtopic2')">Subtopic 2</button>
-                <div id="Subtopic2" class="collapsible-content">
-                    <button onclick="changeVideo('Video 3 Title', 'https://www.youtube.com/embed/VIDEO_ID_3')">Video 3</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
+                <button onclick="toggleCollapse('Data structures')">Data structures operations</button>
+                <div id="Data structures" class="collapsible-content">
+                    <button onclick="changeVideo('Data structures part 1 - Linked lists (operations)', 'https://www.youtube.com/embed/RJMfJJVed2s')">Data structures part 1 - Linked lists (operations)</button>
+                    <button onclick="changeVideo('Data structures part 2 - Graphs (operations)', 'https://www.youtube.com/embed/Oakq0rr9sf8')">Data structures part 2 - Graphs (operations)</button>
+                    <button onclick="changeVideo('Data structures part 3 - Stacks & queues (operations)', 'https://www.youtube.com/embed/0LepNscvzIY')">Data structures part 3 - Stacks & queues (operations)</button>
+                    <button onclick="changeVideo('Data structures part 4 - Trees (operations)', 'https://www.youtube.com/embed/aUSMk-aolQ0')">Data structures part 4 - Trees (operations)</button>
+                    <button onclick="changeVideo('Data structures part 5 - Hash tables (operations)', 'https://www.youtube.com/embed/kNesrwdlG6A')">Data structures part 5 - Hash tables (operations)</button>
                 </div>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="toggleCollapse('Subtopic2')">Subtopic 2</button>
-                <div id="Subtopic2" class="collapsible-content">
-                    <button onclick="changeVideo('Video 3 Title', 'https://www.youtube.com/embed/VIDEO_ID_3')">Video 3</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
-                    <button onclick="changeVideo('Video 4 Title', 'https://www.youtube.com/embed/VIDEO_ID_4')">Video 4</button>
+                <button onclick="changeVideo('Define problems using Boolean logic', 'https://www.youtube.com/embed/iPEVk0WrV_A')">Define problems using Boolean logic</button>
+                <button onclick="toggleCollapse('Karnaugh maps')">Karnaugh maps</button>
+                <div id="Karnaugh maps" class="collapsible-content">
+                    <button onclick="changeVideo('Karnaugh maps part 1', 'https://www.youtube.com/embed/gT9LdBr5DbU')">Karnaugh maps part 1</button>
+                    <button onclick="changeVideo(Karnaugh maps part 2', 'https://www.youtube.com/embed/D_eHFX0Hz0g')">Karnaugh maps part 2</button>
+                    <button onclick="changeVideo('Karnaugh maps part 3', 'https://www.youtube.com/embed/Es7kiAydcAM')">Karnaugh maps part 3</button>
+                    <button onclick="changeVideo('Karnaugh maps part 4', 'https://www.youtube.com/embed/4q6Zwf4tK34')">Karnaugh maps part 4</button>
                 </div>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
+                <button onclick="changeVideo('Logic gates & truth tables', 'https://www.youtube.com/embed/o3mopT63weU')">Logic gates & truth tables</button>
+                <button onclick="changeVideo('Simplifying Boolean algebra', 'https://www.youtube.com/embed/43MVorZRtE0')">Simplifying Boolean algebra</button>
+                <button onclick="changeVideo('Simplifying Boolean algebra revisited', 'https://www.youtube.com/embed/b0i45HRXMds')">Simplifying Boolean algebra revisited</button>
+                <button onclick="changeVideo('Half & full adders', 'https://www.youtube.com/embed/X4mzhHX8IwI')">Half & full adders</button>
+                <button onclick="changeVideo('D-type flip flops', 'https://www.youtube.com/embed/s42EdtPOfi8')">D-type flip flops</button>
 
 
                 </div>
@@ -389,17 +389,63 @@ if ($stat != "su") {  // Check if the session status is not equal to "su" (admin
 
                 <button onclick="toggleCollapse('Elements of Computational Thinking')"> 2.1 Elements of Computational Thinking</button>
                 <div id="Elements of Computational Thinking" class="collapsible-content">
-                <button onclick="changeVideo('Video 5', 'https://www.youtube.com/embed/kJQP7kiw5Fk')">Video 5</button>
+                <button onclick="changeVideo('The nature of abstraction', 'https://www.youtube.com/embed/QljjmB72LnI')">The nature of abstraction</button>
+                <button onclick="changeVideo('The need for abstraction', 'https://www.youtube.com/embed/2N2NcwaHhb4')">The need for abstraction</button>
+                <button onclick="changeVideo('Abstraction & reality', 'https://www.youtube.com/embed/pJz5ifCi7cI')">Abstraction & reality</button>
+                <button onclick="changeVideo('Devise an abstract model', 'https://www.youtube.com/embed/ZPzSgWbdg3k')">Devise an abstract model</button>
+                <button onclick="changeVideo('Identify inputs & outputs', 'https://www.youtube.com/embed/6HsUQbPDxv4')">Identify inputs & outputs</button>
+                <button onclick="changeVideo('Determining preconditions', 'https://www.youtube.com/embed/gPTNXsL-lcA')">Determining preconditions</button>
+                <button onclick="changeVideo('Caching', 'https://www.youtube.com/embed/gPTNXsL-lcA')">Caching</button>
+                <button onclick="changeVideo('Reusable components', 'https://www.youtube.com/embed/92GtfIxxm3Q')">Reusable components</button>
+                <button onclick="changeVideo('Identify components of a problem', 'https://www.youtube.com/embed/-JcrMQpNeOo')">Identify components of a problem</button>
+                <button onclick="changeVideo('Identify components of a solution', 'https://www.youtube.com/embed/Lb9YTn1JAcc')">Identify components of a solution</button>
+                <button onclick="changeVideo('Steps to solve a problem', 'https://www.youtube.com/embed/lMbaCfxWOW0')">Steps to solve a problem</button>
+                <button onclick="changeVideo('Identify sub procedures', 'https://www.youtube.com/embed/EPcxire_d8Q')">Identify sub procedures</button>
+                <button onclick="changeVideo('Decision points in a solution', 'https://www.youtube.com/embed/itNcYo-gVWU')">Decision points in a solution</button>
+                <button onclick="changeVideo('Determine logical conditions', 'https://www.youtube.com/embed/u8S2mA-1tEg')">Determine logical conditions</button>
+                <button onclick="changeVideo('Decisions & program flow', 'https://www.youtube.com/embed/HpFoodysc_o')">Decisions & program flow</button>
+                <button onclick="changeVideo('Tackling concurrent problems', 'https://www.youtube.com/embed/lpM2MMfKmFU')">Tackling concurrent problems</button>
+                <button onclick="changeVideo('Benefits & trade offs of concurrent processing', 'https://www.youtube.com/embed/NI5uys3UY5w')">Benefits & trade offs of concurrent processing</button>
                 </div>
 
                 <button onclick="toggleCollapse('Problem Solving and Programming')"> 2.2 Problem Solving and Programming</button>
                 <div id="Problem Solving and Programming" class="collapsible-content">
-                <button onclick="changeVideo('Video 6', 'https://www.youtube.com/embed/fJ9rUzIMcZQ')">Video 6</button>
+                <button onclick="changeVideo('Programming constructs', 'https://www.youtube.com/embed/9hxCspfuviE')">Programming constructs</button>
+                <button onclick="changeVideo('Recursion', 'https://www.youtube.com/embed/N61yojktcH8')">Recursion</button>
+                <button onclick="changeVideo('Global & local variables', 'https://www.youtube.com/embed/E5US2n_EWcI')">Global & local variables</button>
+                <button onclick="changeVideo('Functions & procedures', 'https://www.youtube.com/embed/qsn5SZRjd_4')">Functions & procedures</button>
+                <button onclick="changeVideo('Integrated development environments', 'https://www.youtube.com/embed/O_GiVzDS2k0')">Integrated development environments</button>
+                <button onclick="changeVideo('Object orientated techniques', 'https://www.youtube.com/embed/GX6HJ_115w0')">Object orientated techniques</button>
+                <button onclick="changeVideo('Features of a problem', 'https://www.youtube.com/embed/r2c_SfdEQ84')">Features of a problem</button>
+                <button onclick="changeVideo('Problem recognition', 'https://www.youtube.com/embed/2zNqU7bC3V8')">Problem recognition</button>
+                <button onclick="changeVideo('Problem decomposition', 'https://www.youtube.com/embed/RUusIWfNCak')">Problem decomposition</button>
+                <button onclick="changeVideo('Divide & conquer', 'https://www.youtube.com/embed/CPrG77GOXAM')">Divide & conquer</button>
+                <button onclick="changeVideo('Use of abstraction', 'https://www.youtube.com/embed/xNHqa5oGCnM')">Use of abstraction</button>
+                <button onclick="changeVideo('Backtracking, data mining & heuristics', 'https://www.youtube.com/embed/VgQGPn-2dG8')">Backtracking, data mining & heuristics</button>
+                <button onclick="changeVideo('Performance modelling, pipelining & visualisation', 'https://www.youtube.com/embed/37P9f3QTP58')">Performance modelling, pipelining & visualisation</button>
+                <button onclick="changeVideo('Test strategies', 'https://www.youtube.com/embed/fpGUQJN1TJI')">Test strategies</button>
+                <button onclick="changeVideo('Test data & user feedback', 'https://www.youtube.com/embed/Wx45BYhGNNM')">Test data & user feedback</button>
                 </div>
 
                 <button onclick="toggleCollapse('Algorithms')"> 2.3 Algorithms</button>
                 <div id="Algorithms" class="collapsible-content">
-                <button onclick="changeVideo('Video 7', 'https://www.youtube.com/embed/kJQP7kiw5Fk')">Video 7</button>
+                <button onclick="changeVideo('Analysis &design of algorithms', 'https://www.youtube.com/embed/gqvf-KyQCuk')">Analysis &design of algorithms</button>
+                <button onclick="changeVideo('Standard algorithms', 'https://www.youtube.com/embed/adXe5wFaq3I')">Standard algorithms</button>
+                <button onclick="changeVideo('Algorithms for the main data structures', 'https://www.youtube.com/embed/Z3Z5KCyArKQ')">Algorithms for the main data structures</button>
+                <button onclick="changeVideo('Implement linear search', 'https://www.youtube.com/embed/BdjaHVIvJGs')">Implement linear search</button>
+                <button onclick="changeVideo('Implement binary search', 'https://www.youtube.com/embed/eme0m1ABz5M')">Implement binary search</button>
+                <button onclick="changeVideo('Implement bubble sort', 'https://www.youtube.com/embed/ih-gRQYc_84')">Implement bubble sort</button>
+                <button onclick="changeVideo('Implement insertion sort', 'https://www.youtube.com/embed/SpnnvFhSD8w')">Implement insertion sort</button>
+                <button onclick="changeVideo('Representing, adding & removing from queues & stacks', 'https://www.youtube.com/embed/fB9cKSXoR0Y')">Representing, adding & removing from queues & stacks</button>
+                <button onclick="changeVideo('Comparing suitability of algorithms', 'https://www.youtube.com/embed/YccgdNJpjN4')">Comparing suitability of algorithms</button>
+                <button onclick="changeVideo('Implement merge sort', 'https://www.youtube.com/embed/EbpMZIVqCl4')">Implement merge sort</button>
+                <button onclick="changeVideo('Implement quick sort', 'https://www.youtube.com/embed/hXDG9OdA9LY')">Implement quick sort</button>
+                <button onclick="changeVideo('Dijkstra's shortest path', 'https://www.youtube.com/embed/YHDmA7ZlwqU')">Dijkstra's shortest path</button>
+                <button onclick="changeVideo('A star pathfinding', 'https://www.youtube.com/embed/z0T1Kl5yBV4')">A star pathfinding</button>
+                <button onclick="changeVideo('A star pathfinding revisited', 'https://www.youtube.com/embed/dOF3Yd6A-4M')">A star pathfinding revisited</button>
+                <button onclick="changeVideo('Measures and methods to determine efficiency of algorithms', 'https://www.youtube.com/embed/A8aUjcULkLI')">Measures and methods to determine efficiency of algorithms</button>
+                <button onclick="changeVideo('Comparison of the complexity of algorithms', 'https://www.youtube.com/embed/dU37Dtzb6Ig')">Comparison of the complexity of algorithms</button>
+                <button onclick="changeVideo('Big O notation in practice', 'https://www.youtube.com/embed/IILaLg98xW0')">Big O notation in practice</button>
                 </div>
             </div>
 

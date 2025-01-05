@@ -13,9 +13,9 @@ openai.api_key = 'sk-proj-0hITHGfUWY-8lKNityArjR3YLY3irXd9duFonfctk73K2avhrydSeO
 
 app = Flask(__name__, template_folder='.', static_folder='.')
 
-def generate_questions(topic, level, num_questions):
+def generate_questions(topic):
     prompt = (
-        f"Generate {num_questions} multiple-choice questions on the topic '{topic}' appropriate for a level student which test there ao1, ao2 and ao3 exam skills. "
+        f"Generate 20 multiple-choice exam questions on the topics from ocr computer science  '{topic}' appropriate for a level student which test there ao1, ao2 and ao3 exam skills. "
         f"Each question should have four answer choices labeled A, B, C, and D, with one correct answer clearly indicated. "
         f"make sure that the questions generated test ocrs exam objectives AO1,AO2,AO3 make sure there is a mix of each but more ao3 and reasoning qs"
         f"Follow this structure strictly and use <br> to separate each line of output:<br>"
@@ -36,7 +36,7 @@ def generate_questions(topic, level, num_questions):
     response = openai.ChatCompletion.create(
         model="gpt-4o",  # Use "gpt-4" if available
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=800  # Adjust if needed for more questions or longer questions
+        max_tokens=1500  # Adjust if needed for more questions or longer questions
     )
 
     return response.choices[0].message['content'].strip()
@@ -46,16 +46,16 @@ def hash_match(match):
     hashed_value = hashlib.sha256(match_text.encode()).hexdigest()
     return hashed_value
 
-@app.route('/')
+@app.route('/ai_paper/')
 def home():
-    return render_template('index.html')
+    return render_template('ai_paper/index.html')
 
-@app.route('/question_generation/quiz', methods=['POST'])
+@app.route('/ai_paper/quiz', methods=['POST'])
 def quiz():
     topic = request.form.get('topic')
     level = request.form.get('level')
-    num_questions = int(request.form.get('num_questions', 5))
-    questions = generate_questions(topic, level, num_questions)
+    
+    questions = generate_questions(topic)
     print(questions)
 
     # Replace the correct answer with its hashed value
@@ -63,7 +63,7 @@ def quiz():
  
     return render_template('quiz.html', questions=questions.replace("\n", ""))
 
-@app.route('/question_generation/result', methods=['POST'])
+@app.route('/ai_paper/result', methods=['POST'])
 def result():
     submitted_answers = request.form.to_dict()
     results = []

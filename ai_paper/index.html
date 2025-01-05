@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="navstyle.css">
+    <title>Quiz Generator</title>
+    <style>
+        /* Center Box Styles */
+        body {
+            background: url('background.jpg') no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    
+        main {
+            margin: 50px auto;
+            width: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px); /* Account for navbar height */
+        }
+    
+        .center-box {
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            background: rgba(228, 218, 218, 0.7); /* Translucent background */
+            backdrop-filter: blur(5px); /* Blur effect on the background */
+        }
+    
+        /* Header Styles */
+        .center-box h1,
+        .center-box h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            text-align: center; /* Center the header */
+        }
+    
+        .center-box button {
+            width: 80%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 12px;
+            color: #fff;
+            background-color: #2e2f30;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        .center-box button:hover {
+            background-color: #5b6e6d;
+        }
+    
+        /* Grid for the topic buttons (3 per row) */
+        .topic-buttons, .num-questions-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 3 buttons per row */
+            gap: 5px;
+            margin-top: 10px;
+        }
+    
+        /* Style for the selected button */
+        .selected {
+            background-color: #4CAF50 !important; /* Green color */
+            border: 2px solid #2e2f30;
+        }
+    </style>
+    
+    
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <!-- Checkbox for toggling the menu visibility -->
+        <input type="checkbox" id="check">
+
+        <!-- Label for the toggle checkbox, containing the menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i> <!-- Icon for a hamburger menu -->
+        </label>
+
+        <!-- Logo for the website -->
+        <div class="logo">
+            <a href="../home.php">Compute Companion</a> <!-- Link back to the home page -->
+        </div>
+
+        <!-- Navigation menu links -->
+        <ul>
+            <li><a href="aboutus.html">About Us</a></li> <!-- Link to About Us page -->
+            <li><a href="#">Messages</a></li> <!-- Placeholder link for messages -->
+            <li class="dropdown">
+                <a href="#">Account</a> <!-- Dropdown menu for account-related options -->
+                <ul class="dropdown-content">
+                    <li><a href="#">Profile</a></li> <!-- Link to user profile -->
+                    <li><a href="#">Settings</a></li> <!-- Link to settings page -->
+                    <li><a href="../logout.php">Logout</a></li> <!-- Link to logout functionality -->
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="center-box">
+            <h1>Select Quiz Options</h1>
+            <!-- Form to send topic and number of questions to Flask -->
+            <form action="/ai_paper/quiz" method="POST">
+                <div class="topic-buttons">
+                    <h2>Select Topic:</h2>
+                    
+                    <button type="button" onclick="selectTopic('paper 1 topics', this)">Paper 1</button>
+                    <button type="button" onclick="selectTopic('paper 2 topics', this)">Paper 2</button>
+                    
+                </div>
+                
+
+
+                <!-- Hidden inputs to store selected values -->
+                <input type="hidden" name="topic" id="selectedTopic">
+                <input type="hidden" name="num_questions" id="selectedNumQuestions">
+
+                <button type="submit">Generate Quiz</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function selectTopic(topic, button) {
+            // Remove 'selected' class from all topic buttons
+            let buttons = document.querySelectorAll('.topic-buttons button');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+
+            // Add 'selected' class to the clicked button
+            button.classList.add('selected');
+
+            // Set the selected topic in the hidden input
+            document.getElementById('selectedTopic').value = topic;
+        }
+
+   
+        
+    </script>
+</body>
+</html>

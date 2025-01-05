@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navstyle.css">
+    <style>
+        /* General page styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            height: 100%;
+            background: url('background.jpg')no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* Nav bar adjustments */
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        nav .logo a {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        /* Centering quiz container */
+        #quiz-container {
+            margin-top: 80px; /* to prevent overlap with the fixed nav */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Ensure elements start at the top */
+            align-items: stretch; /* Ensure elements stretch to full width */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* translucent background */
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 100px auto 50px auto; /* Center and give some space */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            height: auto; /* Adjust height based on content */
+            max-height: 90vh; /* Ensures the quiz container doesn't exceed the viewport height */
+            overflow-y: auto; /* Allows scrolling for long quizzes */
+        }
+
+        /* Heading styles */
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Question and options styling */
+        #quiz-container div {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Label and input styling */
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="hidden"] {
+            display: none;
+        }
+
+        /* Submit button styling */
+        #submit-container {
+            position: absolute;
+            left: 50%;
+            bottom: 1px; /* Adjusts the distance from the bottom */
+            transform: translateX(-50%); /* Centers the button horizontally */
+            margin-top: 20px;
+            z-index: 1;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            #quiz-container {
+                width: 90%;
+                margin-top: 100px; /* More space on smaller screens */
+            }
+
+            #submit-container {
+                left: 50%;
+                bottom: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <!-- Checkbox for toggling the menu visibility -->
+        <input type="checkbox" id="check">
+
+        <!-- Label for the toggle checkbox, containing the menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i> <!-- Icon for a hamburger menu -->
+        </label>
+
+        <!-- Logo for the website -->
+        <div class="logo">
+            <a href="../home.php">Compute Companion</a> <!-- Link back to the home page -->
+        </div>
+
+        <!-- Navigation menu links -->
+        <ul>
+            <li><a href="aboutus.html">About Us</a></li> <!-- Link to About Us page -->
+            <li><a href="#">Messages</a></li> <!-- Placeholder link for messages -->
+            <li class="dropdown">
+                <a href="#">Account</a> <!-- Dropdown menu for account-related options -->
+                <ul class="dropdown-content">
+                    <li><a href="#">Profile</a></li> <!-- Link to user profile -->
+                    <li><a href="#">Settings</a></li> <!-- Link to settings page -->
+                    <li><a href="../logout.php">Logout</a></li> <!-- Link to logout functionality -->
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <h1>Your Generated Quiz</h1>
+    <form action="/ai_paper/result.html" method="post">
+        <div id="quiz-container"></div>
+        <div id="submit-container">
+            <button type="submit">Submit Answers</button>
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const quizContainer = document.getElementById('quiz-container');
+            const questionsHTML = `{{ questions | safe }}`;
+
+            const lines = questionsHTML.split('<br>').map(line => line.trim()).filter(line => line !== '');
+
+            let currentQuestion = null;
+            let currentOptions = [];
+            let currentAnswerHash = null;
+            let questionNumber = 0;
+
+            lines.forEach(line => {
+                if (line.startsWith("Question ")) {
+                    if (currentQuestion) {
+                        renderQuestion(quizContainer, questionNumber, currentQuestion, currentOptions, currentAnswerHash);
+                        currentOptions = [];
+                        currentAnswerHash = null;
+                    }
+                    currentQuestion = line;
+                    questionNumber++;
+                } else if (line.startsWith("A.") || line.startsWith("B.") || line.startsWith("C.") || line.startsWith("D.")) {
+                    currentOptions.push(line);
+                } else if (/^[0-9a-f]{64}$/i.test(line)) {
+                    currentAnswerHash = line;
+                }
+            });
+
+            if (currentQuestion) {
+                renderQuestion(quizContainer, questionNumber, currentQuestion, currentOptions, currentAnswerHash);
+            }
+
+            function renderQuestion(container, questionNum, questionText, options, answerHash) {
+                const questionDiv = document.createElement('div');
+                questionDiv.innerHTML = `
+                    <p><strong>${questionText}</strong></p>
+                    ${options.map(option => `
+                        <label>
+                            <input type="radio" name="answer_${questionNum}" value="${option[0]}" required>
+                            ${option}
+                        </label><br>
+                    `).join('')}
+                    <input type="hidden" name="answer_hash_${questionNum}" value="${answerHash}">
+                `;
+                container.appendChild(questionDiv);
+            }
+        });
+    </script>
+</body>
+</html>
