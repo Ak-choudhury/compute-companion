@@ -68,7 +68,8 @@ if ($stat != "su") {  // Check if the session status is not equal to "su" (admin
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>  <!-- Link to Boxicons for icons -->
         <link rel="stylesheet" href="navstyle.css">  <!-- Link to external CSS for navigation -->
         <title>compute companion-learn</title>  <!-- Set the page title -->
-        <style>
+       <!--
+       <style>
             body {
             font-family: Arial, sans-serif;
             background: url('home_background.png')no-repeat;
@@ -179,6 +180,7 @@ if ($stat != "su") {  // Check if the session status is not equal to "su" (admin
             border-radius: 5px;
             }
         </style>
+         -->
     </head>
     <body>
         <nav>

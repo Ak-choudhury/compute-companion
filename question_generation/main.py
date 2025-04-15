@@ -15,8 +15,9 @@ app = Flask(__name__, template_folder='.', static_folder='.')
 
 def generate_questions(topic, level, num_questions):
     prompt = (
-        f"Generate {num_questions} multiple-choice questions on the topic '{topic}' appropriate for a level student which test there ao1, ao2 and ao3 exam skills. "
+        f"Generate {num_questions} multiple-choice questions on the topic '{topic}' appropriate for a level ocr student which test there ao1, ao2 and ao3 exam skills. "
         f"Each question should have four answer choices labeled A, B, C, and D, with one correct answer clearly indicated. "
+        "keep the questions specific to ocr alevel computer science and generate questions based of what is only i the specification and nothing elses also use language and notations specifyed in the ocr specification"
         f"make sure that the questions generated test ocrs exam objectives AO1,AO2,AO3 make sure there is a mix of each but more ao3 and reasoning qs"
         f"Follow this structure strictly and use <br> to separate each line of output:<br>"
         f"<br>Question 1: <question text><br>"
@@ -34,7 +35,7 @@ def generate_questions(topic, level, num_questions):
     )
 
     response = openai.ChatCompletion.create(
-        model="gpt-4o",  # Use "gpt-4" if available
+        model="gpt-4o-mini",  # Use "gpt-4" if available
         messages=[{"role": "user", "content": prompt}],
         max_tokens=800  # Adjust if needed for more questions or longer questions
     )
