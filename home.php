@@ -136,6 +136,19 @@ if ($stat != "su") {
                         <div class="text">
                             <h3>Revision</h3>
                             <p>Test your knowledge, one topic at a time, to help strengthen your understanding</p>
+                            
+                        </div>
+                    </div>
+                </a>
+                <a href="/new_gs/templates/index.html" class="hom-but">
+                    <div class="button-content">
+                        <div class="icon">
+                            <img src="revise.gif" alt="Icon 3" />
+                        </div>
+                        <div class="text">
+                            <h3>Revision m2</h3>
+                            <p>Test your knowledge, one topic at a time, to help strengthen your understanding</p>
+                            
                         </div>
                     </div>
                 </a>

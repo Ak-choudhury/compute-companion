@@ -1,0 +1,38 @@
+services:
+  web:
+    image: php:8.2-apache
+    container_name: compute-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html/
+    depends_on:
+      - python
+      - db
+
+  python:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    container_name: compute-python
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+
+  db:
+    image: mysql:8.0
+    container_name: compute-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: accounts
+      MYSQL_USER: abul
+      MYSQL_PASSWORD: 0786Rahath
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

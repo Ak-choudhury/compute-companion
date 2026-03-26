@@ -1,5 +1,5 @@
 <?php
-$flask_server_url = "http://python:5000/question_generation/quiz"; // Flask server URL (localhost:5000)
+$flask_server_url = "http://python:5001/new_gs/quiz"; // Flask server URL (localhost:5000)
 $request_method = $_SERVER['REQUEST_METHOD'];
 $endpoint = $_SERVER['REQUEST_URI'];
 
