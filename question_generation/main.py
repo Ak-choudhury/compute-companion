@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import openai
+from openai import OpenAI
 from dotenv import load_dotenv
 import os
 import hashlib
@@ -34,10 +35,12 @@ def generate_questions(topic, level, num_questions):
         f"123: <correct letter><br>"
     )
 
-    response = openai.ChatCompletion.create(
-        model="gpt-4o-mini",  # Use "gpt-4" if available
+    client = OpenAI()
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=800  # Adjust if needed for more questions or longer questions
+        max_tokens=800
     )
 
     return response.choices[0].message['content'].strip()
