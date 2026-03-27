@@ -4,157 +4,281 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navstyle.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            height: 100%;
+            background: url('background.jpg') no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        nav .logo a {
+            color: #fff;
+            font-size: 24px;
         }
 
         h1 {
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            margin-top: 100px;
             margin-bottom: 20px;
         }
 
-        .question-container {
-            margin-bottom: 20px;
+        #quiz-container {
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 100px auto 50px auto;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            height: auto;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .quiz-question {
+            background-color: #fff;
             padding: 15px;
-            border: 1px solid #ddd;
+            margin-bottom: 15px;
             border-radius: 8px;
-            background-color: #f9f9f9;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
         }
 
-        .question-container p {
-            margin-bottom: 10px;
+        .quiz-question p {
+            font-size: 20px;
             font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
         }
 
-        .option-label {
+        label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
             cursor: pointer;
         }
 
-        .submit-btn {
-            padding: 10px 18px;
-            font-size: 16px;
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="hidden"] {
+            display: none;
+        }
+
+        #submit-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 40px 0;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 18px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            #quiz-container {
+                width: 90%;
+                margin-top: 100px;
+            }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <input type="checkbox" id="check">
 
-    <h1>Generated Quiz</h1>
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
 
-    <form method="POST" action="/question_generation/proxy.php/result" id="quiz-form">
+        <div class="logo">
+            <a href="../home.php">Compute Companion</a>
+        </div>
+
+        <ul>
+            <li><a href="../aboutus.html">About Us</a></li>
+            <li><a href="#">Messages</a></li>
+            <li class="dropdown">
+                <a href="#">Account</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="../logout.php">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <h1>Your Generated Quiz</h1>
+
+    <form action="/question_generation/proxy.php/result" method="post" id="quiz-form">
         <div id="quiz-container"></div>
-        <input type="submit" value="Submit Answers" class="submit-btn">
+
+        <div id="submit-container">
+            <button type="submit">Submit Answers</button>
+        </div>
     </form>
 
     <script>
-        const rawQuestions = `{{ questions | safe }}`;
-        const quizContainer = document.getElementById("quiz-container");
-        const form = document.getElementById("quiz-form");
+        document.addEventListener('DOMContentLoaded', function () {
+            const rawQuestions = `{{ questions | safe }}`;
+            const quizContainer = document.getElementById('quiz-container');
+            const quizForm = document.getElementById('quiz-form');
 
-        function parseQuestions(raw) {
-            const lines = raw
-                .split(/<br\s*\/?>/i)
-                .map(line => line.trim())
-                .filter(line => line !== "");
+            function parseQuestions(raw) {
+                const lines = raw
+                    .split(/<br\s*\/?>/i)
+                    .map(line => line.trim())
+                    .filter(line => line !== '');
 
-            const questions = [];
-            let currentQuestion = null;
+                const questions = [];
+                let currentQuestion = null;
 
-            for (const line of lines) {
-                if (/^Question\s+\d+:/i.test(line)) {
-                    if (currentQuestion) {
-                        questions.push(currentQuestion);
-                    }
+                for (const line of lines) {
+                    if (/^Question\s+\d+:/i.test(line)) {
+                        if (currentQuestion) {
+                            questions.push(currentQuestion);
+                        }
 
-                    currentQuestion = {
-                        question_text: line,
-                        options: [],
-                        answer_hash: ""
-                    };
-                } else if (/^[A-D]\.\s*/.test(line)) {
-                    if (currentQuestion) {
-                        currentQuestion.options.push(line);
-                    }
-                } else if (/^[a-f0-9]{64}$/i.test(line)) {
-                    if (currentQuestion) {
-                        currentQuestion.answer_hash = line;
+                        currentQuestion = {
+                            question_text: line,
+                            options: [],
+                            answer_hash: ''
+                        };
+                    } else if (/^[A-D]\.\s*/.test(line)) {
+                        if (currentQuestion) {
+                            currentQuestion.options.push(line);
+                        }
+                    } else if (/^[a-f0-9]{64}$/i.test(line)) {
+                        if (currentQuestion) {
+                            currentQuestion.answer_hash = line;
+                        }
                     }
                 }
+
+                if (currentQuestion) {
+                    questions.push(currentQuestion);
+                }
+
+                return questions;
             }
 
-            if (currentQuestion) {
-                questions.push(currentQuestion);
+            function renderQuiz() {
+                const questions = parseQuestions(rawQuestions);
+
+                if (!questions.length) {
+                    quizContainer.innerHTML = '<div class="quiz-question"><p>Failed to load quiz questions.</p></div>';
+                    return;
+                }
+
+                questions.forEach((question, index) => {
+                    const questionNumber = index + 1;
+
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'quiz-question';
+
+                    const questionText = document.createElement('p');
+                    questionText.textContent = question.question_text;
+                    questionDiv.appendChild(questionText);
+
+                    question.options.forEach(option => {
+                        const label = document.createElement('label');
+
+                        const radio = document.createElement('input');
+                        radio.type = 'radio';
+                        radio.name = `answer_${questionNumber}`;
+                        radio.value = option.charAt(0);
+
+                        label.appendChild(radio);
+                        label.appendChild(document.createTextNode(' ' + option));
+                        questionDiv.appendChild(label);
+                    });
+
+                    const hiddenHash = document.createElement('input');
+                    hiddenHash.type = 'hidden';
+                    hiddenHash.name = `answer_hash_${questionNumber}`;
+                    hiddenHash.value = question.answer_hash;
+                    questionDiv.appendChild(hiddenHash);
+
+                    quizContainer.appendChild(questionDiv);
+                });
             }
 
-            return questions;
-        }
+            quizForm.addEventListener('submit', function (event) {
+                const questionBlocks = document.querySelectorAll('.quiz-question');
+                let allAnswered = true;
 
-        function renderQuiz() {
-            const questions = parseQuestions(rawQuestions);
+                questionBlocks.forEach(question => {
+                    const radios = question.querySelectorAll('input[type="radio"]');
+                    const checked = Array.from(radios).some(radio => radio.checked);
 
-            if (questions.length === 0) {
-                quizContainer.innerHTML = "<p>Failed to load quiz questions.</p>";
-                return;
-            }
-
-            questions.forEach((question, index) => {
-                const questionNumber = index + 1;
-
-                const container = document.createElement("div");
-                container.className = "question-container";
-
-                const questionText = document.createElement("p");
-                questionText.innerHTML = question.question_text;
-                container.appendChild(questionText);
-
-                question.options.forEach(option => {
-                    const label = document.createElement("label");
-                    label.className = "option-label";
-
-                    const radio = document.createElement("input");
-                    radio.type = "radio";
-                    radio.name = `answer_${questionNumber}`;
-                    radio.value = option.charAt(0);
-
-                    label.appendChild(radio);
-                    label.appendChild(document.createTextNode(" " + option));
-                    container.appendChild(label);
+                    if (!checked) {
+                        allAnswered = false;
+                    }
                 });
 
-                const hiddenHash = document.createElement("input");
-                hiddenHash.type = "hidden";
-                hiddenHash.name = `answer_hash_${questionNumber}`;
-                hiddenHash.value = question.answer_hash;
-                container.appendChild(hiddenHash);
-
-                quizContainer.appendChild(container);
-            });
-        }
-
-        form.addEventListener("submit", function(event) {
-            const questionContainers = document.querySelectorAll(".question-container");
-            let allAnswered = true;
-
-            questionContainers.forEach(container => {
-                const radios = container.querySelectorAll("input[type='radio']");
-                const checked = Array.from(radios).some(radio => radio.checked);
-
-                if (!checked) {
-                    allAnswered = false;
+                if (!allAnswered) {
+                    event.preventDefault();
+                    alert('Please answer all questions before submitting.');
                 }
             });
 
-            if (!allAnswered) {
-                event.preventDefault();
-                alert("Please answer all questions before submitting.");
-            }
+            renderQuiz();
         });
-
-        renderQuiz();
     </script>
-
 </body>
 </html>
