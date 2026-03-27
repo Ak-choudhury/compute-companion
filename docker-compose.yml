@@ -23,7 +23,7 @@ services:
       - .env
 
   db:
-    image: mysql:8.0
+    image: mysql:5.7
     container_name: compute-db
     restart: unless-stopped
     environment:
