@@ -1,25 +1,21 @@
 from flask import Flask, render_template, request, jsonify
-import openai
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
 import hashlib
 import re
 
-# Load environment variables from .env file
 load_dotenv()
-
-# Retrieve the API key from environment variables
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__, template_folder='.', static_folder='.')
 
 def generate_questions(topic, level, num_questions):
     prompt = (
-        f"Generate {num_questions} multiple-choice questions on the topic '{topic}' appropriate for a level ocr student which test there ao1, ao2 and ao3 exam skills. "
+        f"Generate {num_questions} multiple-choice questions on the topic '{topic}' appropriate for a level OCR student which test their AO1, AO2 and AO3 exam skills. "
         f"Each question should have four answer choices labeled A, B, C, and D, with one correct answer clearly indicated. "
-        "keep the questions specific to ocr alevel computer science and generate questions based of what is only i the specification and nothing elses also use language and notations specifyed in the ocr specification"
-        f"make sure that the questions generated test ocrs exam objectives AO1,AO2,AO3 make sure there is a mix of each but more ao3 and reasoning qs"
+        f"Keep the questions specific to OCR A-Level Computer Science and generate questions based only on what is in the specification and nothing else. "
+        f"Also use language and notations specified in the OCR specification. "
+        f"Make sure that the questions generated test OCR's exam objectives AO1, AO2, AO3 and make sure there is a mix of each but more AO3 and reasoning questions. "
         f"Follow this structure strictly and use <br> to separate each line of output:<br>"
         f"<br>Question 1: <question text><br>"
         f"A. <option 1><br>"
@@ -43,7 +39,7 @@ def generate_questions(topic, level, num_questions):
         max_tokens=800
     )
 
-    return response.choices[0].message['content'].strip()
+    return response.choices[0].message.content.strip()
 
 def hash_match(match):
     match_text = match.group(0)
@@ -62,9 +58,8 @@ def quiz():
     questions = generate_questions(topic, level, num_questions)
     print(questions)
 
-    # Replace the correct answer with its hashed value
     questions = re.sub(r'123: .', hash_match, questions)
- 
+
     return render_template('quiz.html', questions=questions.replace("\n", ""))
 
 @app.route('/question_generation/result', methods=['POST'])
@@ -105,4 +100,4 @@ def result():
     )
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)  # Listen on all interfaces
+    app.run(debug=False, host='0.0.0.0', port=5000)
