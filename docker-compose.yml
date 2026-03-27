@@ -1,6 +1,8 @@
 services:
   web:
-    image: php:8.2-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: compute-web
     ports:
       - "8080:80"
@@ -27,7 +29,7 @@ services:
     environment:
       MYSQL_DATABASE: accounts
       MYSQL_USER: abul
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: changeme
       MYSQL_ROOT_PASSWORD: rootpassword
     ports:
       - "3307:3306"
