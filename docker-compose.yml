@@ -16,7 +16,7 @@ services:
       dockerfile: Dockerfile.python
     container_name: compute-python
     ports:
-      - "5000:5000"
+      - "5003:5000"
     env_file:
       - .env
 
@@ -27,7 +27,7 @@ services:
     environment:
       MYSQL_DATABASE: accounts
       MYSQL_USER: abul
-      MYSQL_PASSWORD: 0786Rahath
+      MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: rootpassword
     ports:
       - "3307:3306"
