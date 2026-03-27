@@ -1,113 +1,111 @@
-<!-- feedback.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Feedback</title>
+    <title>Quiz Results</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .feedback-container { max-width: 800px; margin: auto; }
-        .question-box { border: 1px solid #ddd; padding: 10px; margin-bottom: 15px; border-radius: 5px; }
-        .correct-answer { color: green; }
-        .incorrect-answer { color: red; }
-        /* General body styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
+            padding: 20px;
             min-height: 100vh;
-            background-color: #3b3737;
             background: url('background.jpg') no-repeat center center;
             background-size: cover;
+            color: white;
         }
 
-        /* Optional navigation bar styling if used */
-        nav {
-            background-color: #333;
-            color: #fff;
-            padding: 15px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            text-align: center;
-        }
-
-        /* Main feedback container with translucent and blurred background */
-        .feedback-container {
-            margin-top: 100px; /* spacing below nav */
-            background: rgba(39, 36, 36, 0.8);
+        .results-container {
+            margin: 40px auto;
+            background: rgba(39, 36, 36, 0.85);
             backdrop-filter: blur(5px);
             padding: 30px;
             width: 80%;
-            max-width: 800px;
+            max-width: 900px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            color: white;
         }
 
-        /* Each question box styling */
-        .question-box {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Correct and incorrect answer highlights */
-        .correct-answer {
-            color: #4CAF50; /* green */
-        }
-
-        .incorrect-answer {
-            color: #FF5252; /* red */
-        }
-
-        /* Headings */
-        h1, h2, h3 {
+        h1, h2 {
             text-align: center;
             color: white;
         }
 
-        /* Preformatted user answers */
-        pre {
+        .summary-box {
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            color: #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 25px;
+            text-align: center;
         }
 
-        
+        .question-box {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .correct-answer {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .incorrect-answer {
+            color: #FF5252;
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: block;
+            width: fit-content;
+            margin: 25px auto 0;
+            padding: 10px 18px;
+            background-color: #2e2f30;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .back-link:hover {
+            background-color: #5b6e6d;
+        }
     </style>
 </head>
 <body>
-    <h1>Your Quiz Feedback</h1>
+    <div class="results-container">
+        <h1>Your Quiz Results</h1>
 
-    <div class="feedback-container">
-        <h2>Feedback for Each Question</h2>
+        <div class="summary-box">
+            <h2>Score Summary</h2>
+            <p><strong>Correct Answers:</strong> {{ correct_count }}</p>
+            <p><strong>Total Questions:</strong> {{ total_questions }}</p>
+            <p><strong>Score Percentage:</strong> {{ "%.1f"|format(score_percentage) }}%</p>
+        </div>
 
-        {% for i in range(questions|length) %}
+        <h2>Question Breakdown</h2>
+
+        {% if results %}
+            {% for result in results %}
+                <div class="question-box">
+                    <p><strong>Question {{ result.question_number }}</strong></p>
+                    <p><strong>Your Answer:</strong> {{ result.user_answer }}</p>
+
+                    {% if result.is_correct %}
+                        <p class="correct-answer">Correct</p>
+                    {% else %}
+                        <p class="incorrect-answer">Incorrect</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
             <div class="question-box">
-                <h3>{{ questions[i]['question_text'] }}</h3>
-                
-                <p><strong>Your Answer:</strong></p>
-                <pre>{{ user_answers.get('answer_' ~ i|string, '') }}</pre>  <!-- Display user's answer -->
-                
-                <p><strong>Marks Awarded:</strong> {{ feedback[i]['marks_awarded'] }} / {{ questions[i]['marks'] }}</p>
-                <p><strong>Feedback:</strong> {{ feedback[i]['feedback'] }}</p>
-                <p><strong>Corrections:</strong> {{ feedback[i]['corrections'] }}</p>
+                <p>No answers were submitted.</p>
             </div>
-        {% endfor %}
+        {% endif %}
+
+        <a href="/question_generation/index.html" class="back-link">Back to Quiz Generator</a>
     </div>
 </body>
 </html>

@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="navstyle.css">
     <title>Quiz Generator</title>
-    
+
     <style>
-        /* Center Box Styles */
         body {
             background: url('background.jpg') no-repeat;
             background-position: center;
             background-size: cover;
         }
-    
+
         main {
             margin: 50px auto;
             width: 1000px;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: calc(100vh - 80px); /* Account for navbar height */
+            min-height: calc(100vh - 80px);
         }
-    
+
         .center-box {
             padding: 20px;
             width: 80%;
@@ -31,19 +30,18 @@
             border: 2px solid #ccc;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            background: rgba(228, 218, 218, 0.7); /* Translucent background */
-            backdrop-filter: blur(5px); /* Blur effect on the background */
+            background: rgba(228, 218, 218, 0.7);
+            backdrop-filter: blur(5px);
         }
-    
-        /* Header Styles */
+
         .center-box h1,
         .center-box h2 {
             margin-bottom: 20px;
             font-size: 24px;
             color: #333;
-            text-align: center; /* Center the header */
+            text-align: center;
         }
-    
+
         .center-box button {
             width: 80%;
             padding: 10px;
@@ -55,69 +53,59 @@
             border-radius: 5px;
             cursor: pointer;
         }
-    
+
         .center-box button:hover {
             background-color: #5b6e6d;
         }
-    
-        /* Grid for the topic buttons (3 per row) */
-        .topic-buttons, .num-questions-buttons {
+
+        .topic-buttons,
+        .num-questions-buttons {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 3 buttons per row */
+            grid-template-columns: repeat(4, 1fr);
             gap: 5px;
             margin-top: 10px;
         }
-    
-        /* Style for the selected button */
+
         .selected {
-            background-color: #4CAF50 !important; /* Green color */
+            background-color: #4CAF50 !important;
             border: 2px solid #2e2f30;
         }
-    </style> 
-    
-    
-    
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav>
-        <!-- Checkbox for toggling the menu visibility -->
         <input type="checkbox" id="check">
 
-        <!-- Label for the toggle checkbox, containing the menu icon -->
         <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i> <!-- Icon for a hamburger menu -->
+            <i class="fas fa-bars"></i>
         </label>
 
-        <!-- Logo for the website -->
         <div class="logo">
-            <a href="../home.php">Compute Companion</a> <!-- Link back to the home page -->
+            <a href="../home.php">Compute Companion</a>
         </div>
 
-        <!-- Navigation menu links -->
         <ul>
-            <li><a href="aboutus.html">About Us</a></li> <!-- Link to About Us page -->
-            <li><a href="#">Messages</a></li> <!-- Placeholder link for messages -->
+            <li><a href="../aboutus.html">About Us</a></li>
+            <li><a href="#">Messages</a></li>
             <li class="dropdown">
-                <a href="#">Account</a> <!-- Dropdown menu for account-related options -->
+                <a href="#">Account</a>
                 <ul class="dropdown-content">
-                    <li><a href="#">Profile</a></li> <!-- Link to user profile -->
-                    <li><a href="#">Settings</a></li> <!-- Link to settings page -->
-                    <li><a href="../logout.php">Logout</a></li> <!-- Link to logout functionality -->
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="../logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
 
-    <!-- Main Content -->
     <main>
         <div class="center-box">
             <h1>Select Quiz Options</h1>
-            <!-- Form to send topic and number of questions to Flask -->
-            <form action="/question_generation/quiz" method="POST">
+
+            <form action="/question_generation/proxy.php" method="POST" onsubmit="return validateQuizForm()">
                 <div class="topic-buttons">
                     <h2>Select Topic:</h2>
-                    
+
                     <button type="button" onclick="selectTopic('Structure and Function of the Processor', this)">1.1.1. Structure and Function of the Processor</button>
                     <button type="button" onclick="selectTopic('Types of Processor', this)">1.1.2. Types of Processor</button>
                     <button type="button" onclick="selectTopic('Input, Output and Storage', this)">1.1.3. Input, Output and Storage</button>
@@ -138,7 +126,7 @@
                     <button type="button" onclick="selectTopic('Thinking Ahead', this)">2.1.2. Thinking Ahead</button>
                     <button type="button" onclick="selectTopic('Thinking Procedurally', this)">2.1.3. Thinking Procedurally</button>
                     <button type="button" onclick="selectTopic('Thinking Logically', this)">2.1.4. Thinking Logically</button>
-                    <button type="button" onclick="selectTopic(' Thinking Concurrently', this)">2.1.5. Thinking Concurrently</button>
+                    <button type="button" onclick="selectTopic('Thinking Concurrently', this)">2.1.5. Thinking Concurrently</button>
                     <button type="button" onclick="selectTopic('Programming Techniques', this)">2.2.1. Programming Techniques</button>
                     <button type="button" onclick="selectTopic('Computational Methods', this)">2.2.2. Computational Methods</button>
                     <button type="button" onclick="selectTopic('Analysis, Design and Comparison of Algorithms', this)">2.3.1. Analysis, Design and Comparison of Algorithms</button>
@@ -147,20 +135,19 @@
                     <button type="button" onclick="selectTopic('Searching Algorithms', this)">2.3.4. Searching Algorithms</button>
                     <button type="button" onclick="selectTopic('Path Finding Algorithms', this)">2.3.5. Path Finding Algorithms</button>
                 </div>
-                
 
                 <div class="num-questions-buttons">
                     <h2>Select Number of Questions:</h2>
-                    
+
                     <button type="button" onclick="selectNumQuestions(5, this)">5 Questions</button>
                     <button type="button" onclick="selectNumQuestions(10, this)">10 Questions</button>
                     <button type="button" onclick="selectNumQuestions(15, this)">15 Questions</button>
                     <button type="button" onclick="selectNumQuestions(20, this)">20 Questions</button>
                 </div>
 
-                <!-- Hidden inputs to store selected values -->
                 <input type="hidden" name="topic" id="selectedTopic">
                 <input type="hidden" name="num_questions" id="selectedNumQuestions">
+                <input type="hidden" name="level" value="A-Level">
 
                 <button type="submit">Generate Quiz</button>
             </form>
@@ -169,27 +156,34 @@
 
     <script>
         function selectTopic(topic, button) {
-            // Remove 'selected' class from all topic buttons
             let buttons = document.querySelectorAll('.topic-buttons button');
             buttons.forEach(btn => btn.classList.remove('selected'));
-
-            // Add 'selected' class to the clicked button
             button.classList.add('selected');
-
-            // Set the selected topic in the hidden input
             document.getElementById('selectedTopic').value = topic;
         }
 
         function selectNumQuestions(num, button) {
-            // Remove 'selected' class from all num-questions buttons
             let buttons = document.querySelectorAll('.num-questions-buttons button');
             buttons.forEach(btn => btn.classList.remove('selected'));
-
-            // Add 'selected' class to the clicked button
             button.classList.add('selected');
-
-            // Set the selected number of questions in the hidden input
             document.getElementById('selectedNumQuestions').value = num;
+        }
+
+        function validateQuizForm() {
+            const topic = document.getElementById('selectedTopic').value;
+            const numQuestions = document.getElementById('selectedNumQuestions').value;
+
+            if (!topic) {
+                alert('Please select a topic.');
+                return false;
+            }
+
+            if (!numQuestions) {
+                alert('Please select the number of questions.');
+                return false;
+            }
+
+            return true;
         }
     </script>
 </body>
